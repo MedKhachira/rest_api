@@ -8,13 +8,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\User;
+use FOS\RestBundle\Controller\Annotations\Get;
 
 class UserController extends Controller
 {
     /**
-     * @Route("/users", name="users_list")
-     * @Method({"GET"})
+     * @Get("/users")
      */
+
     public function getUsersAction(Request $request)
     {
         $users = $this->get('doctrine.orm.entity_manager')
@@ -36,9 +37,9 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/users/{id}", name="users_one")
-     * @Method({"GET"})
+     * @Get("/users/{user_id}")
      */
+    
     public function getUserAction(Request $request)
     {
         $user = $this->get('doctrine.orm.entity_manager')
